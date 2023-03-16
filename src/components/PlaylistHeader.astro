@@ -1,0 +1,144 @@
+---
+export interface Props {
+  avatar: string
+  name: string
+  date: string
+  textColor: string
+  secondaryTextColor: string
+}
+
+const { avatar, name, date, textColor, secondaryTextColor } = Astro.props
+---
+
+<header>
+  <a href="/" class="back-button playlist-back-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="2"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M15.75 19.5L8.25 12l7.5-7.5"></path>
+    </svg>
+  </a>
+  <div class="avatar-container">
+    <img src={avatar} alt={name} class="playlist-avatar" />
+    <button class="add-button playlist-add-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="3"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"></path>
+      </svg>
+    </button>
+  </div>
+  <div class="user-info">
+    <span class="user-name">
+      <span class="playlist-user-name">
+        {name}
+      </span>
+    </span>
+    <span class="user-date">
+      <span class="playlist-user-date">
+        {date}
+      </span>
+    </span>
+  </div>
+</header>
+
+<style define:vars={{ textColor, secondaryTextColor }}>
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: 40px 30px 20px;
+    position: relative;
+  }
+
+  .back-button {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    background: none;
+    border: none;
+  }
+
+  .back-button svg {
+    width: 30px;
+    height: 30px;
+    color: var(--textColor);
+  }
+
+  .avatar-container {
+    position: relative;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid var(--secondaryTextColor);
+    padding: 3px;
+  }
+
+  .add-button {
+    background-color: white;
+    width: 24px;
+    height: 24px;
+    display: block;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: -6px;
+    right: -6px;
+  }
+
+  .add-button svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .user-info {
+    flex: 1;
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .user-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .user-name span {
+    display: inline-block;
+  }
+
+  .user-date {
+    font-size: 13px;
+    color: var(--secondaryTextColor);
+  }
+
+  .user-date span {
+    display: inline-block;
+  }
+</style>

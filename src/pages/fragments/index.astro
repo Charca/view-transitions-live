@@ -1,0 +1,66 @@
+---
+import AppHeader from '../../components/AppHeader.astro'
+import Card from '../../components/Card.astro'
+import data from '../../data.json'
+---
+
+<AppHeader />
+<main>
+  <div class="card-list">
+    {data.map((card) => <Card {...card} />)}
+  </div>
+  <footer>
+    <p>
+      This site is a demo of how to persist animating elements across navigation
+      events using the
+      <a
+        href="https://developer.chrome.com/docs/web-platform/view-transitions/"
+        target="_blank"
+        rel="noopener"
+      >
+        View Transitions API
+      </a>
+      and the
+      <a
+        href="https://developer.chrome.com/docs/web-platform/navigation-api/"
+        target="_blank"
+        rel="noopener"
+      >
+        Navigation API
+      </a>. Both APIs are available in Chrome 111+.
+    </p>
+    <p>
+      Check out the <a
+        href="https://github.com/Charca/view-transitions-live"
+        target="_blank"
+        rel="noopener">source code on Github</a
+      >, and this
+      <a
+        href="https://simple-set-demos.glitch.me/video/"
+        target="_blank"
+        rel="noopener">minimal</a
+      > demo by
+      <a href="https://twitter.com/jaffathecake" target="_blank" rel="noopener"
+        >Jake Archibald</a
+      > for the smooth video transition.
+    </p>
+  </footer>
+</main>
+
+<style>
+  main {
+    margin: auto;
+    padding: 0 1.5rem 1.5rem;
+    max-width: 600px;
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  footer {
+    padding: 40px 0px;
+  }
+</style>

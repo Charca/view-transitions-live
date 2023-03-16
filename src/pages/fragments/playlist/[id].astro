@@ -1,0 +1,108 @@
+---
+import BackgroundVideo from '../../../components/BackgroundVideo.astro'
+import CardStats from '../../../components/CardStats.astro'
+import FloatingSquares from '../../../components/FloatingSquares.astro'
+import PlaylistDetails from '../../../components/PlaylistDetails.astro'
+import PlaylistHeader from '../../../components/PlaylistHeader.astro'
+import PlaylistMedia from '../../../components/PlaylistMedia.astro'
+import data from '../../../data.json'
+
+export function getStaticPaths() {
+  return data.map((playlist) => ({
+    params: { id: playlist.id },
+  }))
+}
+
+const playlist = data.find((p) => p.id === Astro.params.id) || data[0]
+
+const {
+  title,
+  description,
+  stats,
+  user,
+  backgroundColor,
+  backgroundImage,
+  backgroundAnimation,
+  media,
+  textColor,
+  secondaryTextColor,
+} = playlist
+---
+
+<main class="with-transition">
+  <header>
+    {
+      backgroundAnimation === 'floatingSquares' ? (
+        <FloatingSquares />
+      ) : backgroundAnimation === 'purpleVideo' ? (
+        <BackgroundVideo />
+      ) : (
+        <div class="solid-background playlist-background" />
+      )
+    }
+    <PlaylistHeader
+      {...user}
+      textColor={textColor}
+      secondaryTextColor={secondaryTextColor}
+    />
+    <h1 class="playlist-title">{title}</h1>
+    <CardStats {...stats} secondaryTextColor={secondaryTextColor} />
+    <p class="playlist-description">{description}</p>
+    <PlaylistMedia
+      backgroundColor={backgroundColor}
+      title={title}
+      media={media}
+    />
+  </header>
+  <PlaylistDetails />
+</main>
+
+<style
+  define:vars={{
+    backgroundColor,
+    backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
+    textColor,
+    secondaryTextColor,
+  }}
+>
+  main {
+    margin: 0 auto;
+    padding: 0;
+    max-width: 600px;
+  }
+
+  header {
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  .solid-background {
+    background: var(--backgroundColor);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+
+    background-image: var(--backgroundImage);
+    background-repeat: repeat-y;
+    background-size: contain;
+  }
+
+  h1 {
+    margin: 10px 0 15px;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+    max-width: 360px;
+    line-height: 1.6;
+    color: var(--secondaryTextColor);
+  }
+</style>

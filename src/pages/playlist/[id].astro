@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import PlaylistFragment from '../fragments/playlist/[id].astro'
+import data from '../../data.json'
+
+export function getStaticPaths() {
+  return data.map((playlist) => ({
+    params: { id: playlist.id },
+  }))
+}
+---
+
+<Layout title="View Transitions Demo - Playlist Details">
+  <PlaylistFragment />
+</Layout>

@@ -1,63 +1,107 @@
 ---
+import BackgroundVideo from './BackgroundVideo.astro'
+import CardHeader from './CardHeader.astro'
+import CardMedia from './CardMedia.astro'
+import CardStats from './CardStats.astro'
+import FloatingSquares from './FloatingSquares.astro'
+
 export interface Props {
-	title: string;
-	body: string;
-	href: string;
+  id: string
+  title: string
+  user: {
+    avatar: string
+    name: string
+    date: string
+  }
+  stats: {
+    count: string
+    time: string
+  }
+  backgroundColor: string
+  backgroundImage?: string
+  backgroundAnimation?: string
+  textColor: string
+  secondaryTextColor: string
+  media: {
+    type: string
+    url: string
+  }
 }
 
-const { href, title, body } = Astro.props;
+const {
+  id,
+  title,
+  user,
+  stats,
+  backgroundColor,
+  backgroundImage,
+  backgroundAnimation,
+  textColor,
+  secondaryTextColor,
+  media,
+} = Astro.props
 ---
 
-<li class="link-card">
-	<a href={href}>
-		<h2>
-			{title}
-			<span>&rarr;</span>
-		</h2>
-		<p>
-			{body}
-		</p>
-	</a>
-</li>
-<style>
-	.link-card {
-		list-style: none;
-		display: flex;
-		padding: 0.25rem;
-		background-color: white;
-		background-image: none;
-		background-size: 400%;
-		border-radius: 0.6rem;
-		background-position: 100%;
-		transition: background-position 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-		box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
-	}
+<a href={`/playlist/${id}`} class={`card`}>
+  {
+    backgroundAnimation === 'floatingSquares' ? (
+      <FloatingSquares isRounded={true} />
+    ) : backgroundAnimation === 'purpleVideo' ? (
+      <BackgroundVideo isRounded={true} />
+    ) : (
+      <div class="solid-background playlist-background" />
+    )
+  }
+  <CardHeader {...user} secondaryTextColor={secondaryTextColor} />
+  <h2 class="playlist-title">{title}</h2>
+  <CardStats {...stats} secondaryTextColor={secondaryTextColor} />
+  <CardMedia backgroundColor={backgroundColor} title={title} media={media} />
+</a>
 
-	.link-card > a {
-		width: 100%;
-		text-decoration: none;
-		line-height: 1.4;
-		padding: 1rem 1.3rem;
-		border-radius: 0.35rem;
-		color: #111;
-		background-color: white;
-		opacity: 0.8;
-	}
-	h2 {
-		margin: 0;
-		font-size: 1.25rem;
-		transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-	}
-	p {
-		margin-top: 0.5rem;
-		margin-bottom: 0;
-		color: #444;
-	}
-	.link-card:is(:hover, :focus-within) {
-		background-position: 0;
-		background-image: var(--accent-gradient);
-	}
-	.link-card:is(:hover, :focus-within) h2 {
-		color: rgb(var(--accent));
-	}
+<style
+  define:vars={{
+    backgroundColor,
+    backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
+    textColor,
+  }}
+>
+  .card {
+    border-radius: 2rem;
+    text-decoration: none;
+    color: var(--textColor);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all ease-in-out 0.25s;
+    position: relative;
+
+    box-shadow: var(--shadow-elevation-low);
+  }
+
+  .solid-background {
+    background: var(--backgroundColor);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 2rem;
+
+    background-image: var(--backgroundImage);
+    background-repeat: repeat-y;
+    background-size: contain;
+  }
+
+  .card:hover {
+    /* transform: scale(1.03); */
+    transform: scale(0.97);
+  }
+
+  h2 {
+    font-size: 30px;
+    margin: 10px 0;
+    position: relative;
+    text-align: center;
+  }
 </style>

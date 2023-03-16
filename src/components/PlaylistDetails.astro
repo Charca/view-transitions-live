@@ -1,0 +1,108 @@
+---
+const tracks = [
+  { title: 'Sthlm Sunset', artist: 'Ehrling', image: 'album1.jpg' },
+  {
+    title: 'Living For Love',
+    artist: 'TWOPILOTS, Natty Rico',
+    image: 'album2.png',
+  },
+  { title: 'Madan (King)', artist: 'Bakermat', image: 'album3.jpg' },
+  { title: 'All the Time', artist: 'Max the Sax', image: 'album4.png' },
+  { title: 'Maasai', artist: 'Axero', image: 'album5.jpg' },
+  { title: 'Love Or Hate Me', artist: 'Charleon', image: 'album6.jpg' },
+  { title: 'Sthlm Sunset', artist: 'Ehrling', image: 'album1.jpg' },
+  {
+    title: 'Living For Love',
+    artist: 'TWOPILOTS, Natty Rico',
+    image: 'album2.png',
+  },
+  { title: 'Madan (King)', artist: 'Bakermat', image: 'album3.jpg' },
+  { title: 'All the Time', artist: 'Max the Sax', image: 'album4.png' },
+  { title: 'Maasai', artist: 'Axero', image: 'album5.jpg' },
+  { title: 'Love Or Hate Me', artist: 'Charleon', image: 'album6.jpg' },
+]
+---
+
+<ul>
+  {
+    tracks.map((track) => (
+      <li>
+        <img class="track-image" src={`/${track.image}`} alt={track.title} />
+        <div class="track-details">
+          <span class="track-title">{track.title}</span>
+          <span>{track.artist}</span>
+        </div>
+        <div class="track-icons">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+          >
+            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+          </svg>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </div>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul,
+  li {
+    padding: 0;
+    margin: 0;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+
+  li {
+    display: flex;
+    padding: 10px 20px;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .track-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 6px;
+  }
+
+  .track-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .track-title {
+    font-weight: bold;
+  }
+
+  .track-icons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .track-icons svg {
+    width: 24px;
+    height: 24px;
+    color: rgb(156, 156, 156);
+  }
+</style>

@@ -1,0 +1,103 @@
+---
+export interface Props {
+  avatar: string
+  name: string
+  date: string
+  secondaryTextColor: string
+}
+
+const { avatar, name, date, secondaryTextColor } = Astro.props
+---
+
+<header>
+  <img src={avatar} alt={name} class="playlist-avatar" />
+  <div class="user-info">
+    <span class="user-name">
+      <span class="playlist-user-name">
+        {name}
+      </span>
+    </span>
+    <span class="user-date">
+      <span class="playlist-user-date">
+        {date}
+      </span>
+    </span>
+  </div>
+  <button class="playlist-add-button">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="3"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M12 4.5v15m7.5-7.5h-15"></path>
+    </svg>
+  </button>
+</header>
+
+<style define:vars={{ secondaryTextColor }}>
+  header {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    padding: 20px 30px;
+    position: relative;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    display: block;
+    border-radius: 50%;
+    border: 1px solid var(--secondaryTextColor);
+    padding: 3px;
+  }
+
+  .user-info {
+    flex: 1;
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .user-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  .user-name span {
+    display: inline-block;
+  }
+
+  .user-date {
+    font-size: 13px;
+    color: var(--secondaryTextColor);
+  }
+
+  .user-date span {
+    display: inline-block;
+  }
+
+  button {
+    background-color: white;
+    width: 40px;
+    height: 40px;
+    display: block;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  button svg {
+    width: 20px;
+    height: 20px;
+  }
+</style>

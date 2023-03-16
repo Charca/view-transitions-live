@@ -1,0 +1,65 @@
+---
+export interface Props {
+  count: string
+  time: string
+  secondaryTextColor: string
+}
+
+const { count, time, secondaryTextColor } = Astro.props
+---
+
+<div class="card-stats playlist-stats">
+  <div class="stat">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        d="M18.375 2.25c-1.035 0-1.875.84-1.875 1.875v15.75c0 1.035.84 1.875 1.875 1.875h.75c1.035 0 1.875-.84 1.875-1.875V4.125c0-1.036-.84-1.875-1.875-1.875h-.75zM9.75 8.625c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-.75a1.875 1.875 0 01-1.875-1.875V8.625zM3 13.125c0-1.036.84-1.875 1.875-1.875h.75c1.036 0 1.875.84 1.875 1.875v6.75c0 1.035-.84 1.875-1.875 1.875h-.75A1.875 1.875 0 013 19.875v-6.75z"
+      ></path>
+    </svg>
+
+    <span>{count}</span>
+  </div>
+  <span>-</span>
+  <div class="stat">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      class="w-6 h-6"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
+        clip-rule="evenodd"></path>
+    </svg>
+
+    <span>{time}</span>
+  </div>
+</div>
+
+<style define:vars={{ secondaryTextColor }}>
+  .card-stats {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--secondaryTextColor);
+    margin: 10px 0;
+    position: relative;
+  }
+
+  .stat {
+    display: flex;
+    gap: 4px;
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+</style>

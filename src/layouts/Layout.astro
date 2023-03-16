@@ -1,35 +1,84 @@
 ---
+import '../styles/styles.css'
+
 export interface Props {
-	title: string;
+  title: string
 }
 
-const { title } = Astro.props;
+const { title } = Astro.props
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script>
+      import '../scripts/navigation.js'
+    </script>
+  </head>
+  <body>
+    <div id="content">
+      <slot />
+    </div>
+  </body>
 </html>
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
+  :root {
+    --off-white: rgb(213, 213, 213);
+    --light-gray: rgb(195, 195, 195);
+  }
+
+  :root {
+    --shadow-color: 0deg 0% 50%;
+    --shadow-elevation-low: 0px 0.5px 0.6px hsl(var(--shadow-color) / 0.31),
+      0px 1px 1.3px -0.8px hsl(var(--shadow-color) / 0.41),
+      0px 2.3px 2.9px -1.6px hsl(var(--shadow-color) / 0.52);
+    --shadow-elevation-medium: 0px 0.5px 0.6px hsl(var(--shadow-color) / 0.32),
+      0px 2.2px 2.8px -0.5px hsl(var(--shadow-color) / 0.41),
+      0px 5.1px 6.4px -1.1px hsl(var(--shadow-color) / 0.49),
+      0px 11.7px 14.7px -1.6px hsl(var(--shadow-color) / 0.57);
+    --shadow-elevation-high: 0px 0.5px 0.6px hsl(var(--shadow-color) / 0.3),
+      0px 4.8px 6px -0.2px hsl(var(--shadow-color) / 0.34),
+      0px 8.9px 11.1px -0.5px hsl(var(--shadow-color) / 0.38),
+      0px 14px 17.5px -0.7px hsl(var(--shadow-color) / 0.42),
+      0px 21.2px 26.6px -0.9px hsl(var(--shadow-color) / 0.46),
+      0.1px 31.7px 39.7px -1.2px hsl(var(--shadow-color) / 0.49),
+      0.1px 46.6px 58.4px -1.4px hsl(var(--shadow-color) / 0.53),
+      0.1px 67.3px 84.3px -1.6px hsl(var(--shadow-color) / 0.57);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: system-ui, sans-serif;
+    background-color: #f6f6f6;
+  }
+  body {
+    margin: 0;
+  }
+  code {
+    font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+      DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+  }
+
+  video.playlist-image {
+    display: block;
+    max-width: 100%;
+    /* height: 350px; */
+    border-radius: 0 0 2rem 2rem;
+
+    min-height: 418px;
+    object-fit: cover;
+
+    clip-path: inset(1px 1px);
+    margin-bottom: -1px;
+  }
 </style>
