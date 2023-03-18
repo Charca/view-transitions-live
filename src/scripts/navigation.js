@@ -2,6 +2,8 @@ import {
   shouldNotIntercept,
   updateTheDOMSomehow,
   findCardByPath,
+  getPersistentElement,
+  getPersistentElementContainer,
 } from './utils'
 
 let prevPageScroll = 0
@@ -34,27 +36,31 @@ function handlePlaylistTransition(navigateEvent, toPath, fromPath) {
         return
       }
 
+      // Make sure there are no other cards with the 'with-transition' class
       document
         .querySelectorAll('.card')
         .forEach((card) => card.classList.remove('with-transition'))
+
       const card = findCardByPath(toPath)
       let persistentEl
 
+      // Add the 'with-transition' class to the card that is transitioning
+      // and save a reference to any persistent elements (like video) if they exist
       if (card) {
         card.classList.add('with-transition')
-        persistentEl = card.querySelector('[data-persist="true"]')
+        persistentEl = getPersistentElement(card)
       }
 
+      // Save the page scroll to restore it on the way back
       prevPageScroll = document.documentElement.scrollTop
 
       document.startViewTransition(() => {
         updateTheDOMSomehow(data)
         document.documentElement.scrollTop = 0
 
-        const persistentElContainer = document.querySelector(
-          '[data-persist-container="true"]'
-        )
+        const persistentElContainer = getPersistentElementContainer()
 
+        // Place the persistent element into its container in the updated DOM
         if (persistentEl && persistentElContainer) {
           persistentElContainer.replaceChildren(persistentEl)
         }
@@ -75,28 +81,29 @@ function handleHomeTransition(navigateEvent, toPath, fromPath) {
         return
       }
 
-      const persistentEl = document.querySelector('[data-persist="true"]')
+      // Save a reference to any persistent elements (like video) if they exist
+      const persistentEl = getPersistentElement()
 
       document.startViewTransition(() => {
         updateTheDOMSomehow(data)
 
+        // Find the card that matches the playlist we're transitioning back from
         const card = findCardByPath(fromPath)
 
+        // Add the 'with-transition' class to the transitioning card and
+        // place the persistent element its container in the updated DOM
         if (card) {
           card.classList.add('with-transition')
-          const persistentElContainer = card.querySelector(
-            '[data-persist-container="true"]'
-          )
+          const persistentElContainer = getPersistentElementContainer(card)
 
           if (persistentEl && persistentElContainer) {
             persistentElContainer.replaceChildren(persistentEl)
           }
         }
 
+        // Restore page scroll
         if (prevPageScroll) {
           document.documentElement.scrollTop = prevPageScroll
-        } else if (card) {
-          card.scrollIntoViewIfNeeded()
         }
       })
     },

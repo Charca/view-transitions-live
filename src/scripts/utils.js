@@ -20,3 +20,11 @@ export function updateTheDOMSomehow(data) {
 export function findCardByPath(path, parent = document) {
   return parent.querySelector(`[href="${path}"]`)
 }
+
+export function getPersistentElement(parent = document) {
+  return parent.querySelector('[data-persist="true"]')
+}
+
+export function getPersistentElementContainer(parent = document) {
+  return parent.querySelector('[data-persist-container="true"]')
+}
