@@ -33,6 +33,7 @@ function handlePlaylistTransition(navigateEvent, toPath, fromPath) {
 
       if (!document.startViewTransition) {
         updateTheDOMSomehow(data)
+        document.documentElement.scrollTop = 0
         return
       }
 
