@@ -13,7 +13,7 @@ export interface Props {
 const { title, backgroundColor, media } = Astro.props
 ---
 
-<div class="card-media">
+<div class="playlist-media">
   {
     media.type === 'image' ? (
       <img src={media.url} alt={title} class="playlist-image" />
@@ -29,8 +29,8 @@ const { title, backgroundColor, media } = Astro.props
   <!-- <div class="card-media-overlay playlist-overlay"></div> -->
 </div>
 
-<style define:vars={{ backgroundColor }}>
-  .card-media {
+<style is:global define:vars={{ backgroundColor }}>
+  .playlist-media {
     position: relative;
     display: flex;
     justify-content: center;
@@ -38,7 +38,7 @@ const { title, backgroundColor, media } = Astro.props
     width: 100%;
   }
 
-  .card-media-overlay {
+  .playlist-media .card-media-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -49,7 +49,7 @@ const { title, backgroundColor, media } = Astro.props
     z-index: 2;
   }
 
-  img {
+  .playlist-media img {
     display: block;
     max-height: 480px;
     z-index: 1;

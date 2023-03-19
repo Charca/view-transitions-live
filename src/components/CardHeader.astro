@@ -9,7 +9,7 @@ export interface Props {
 const { avatar, name, date, secondaryTextColor } = Astro.props
 ---
 
-<header>
+<header class="card-header">
   <img src={avatar} alt={name} class="playlist-avatar" />
   <div class="user-info">
     <span class="user-name">
@@ -39,8 +39,8 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
   </button>
 </header>
 
-<style define:vars={{ secondaryTextColor }}>
-  header {
+<style is:global define:vars={{ secondaryTextColor }}>
+  .card-header {
     display: flex;
     gap: 12px;
     width: 100%;
@@ -48,7 +48,7 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
     position: relative;
   }
 
-  img {
+  .card-header img {
     width: 50px;
     height: 50px;
     display: block;
@@ -57,7 +57,7 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
     padding: 3px;
   }
 
-  .user-info {
+  .card-header .user-info {
     flex: 1;
     display: flex;
     gap: 2px;
@@ -65,26 +65,26 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
     justify-content: center;
   }
 
-  .user-name {
+  .card-header .user-name {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: bold;
   }
 
-  .user-name span {
+  .card-header .user-name span {
     display: inline-block;
   }
 
-  .user-date {
+  .card-header .user-date {
     font-size: 13px;
     color: var(--secondaryTextColor);
   }
 
-  .user-date span {
+  .card-header .user-date span {
     display: inline-block;
   }
 
-  button {
+  .card-header button {
     background-color: white;
     width: 40px;
     height: 40px;
@@ -96,7 +96,7 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
     justify-content: center;
   }
 
-  button svg {
+  .card-header button svg {
     width: 20px;
     height: 20px;
   }

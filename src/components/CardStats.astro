@@ -41,7 +41,7 @@ const { count, time, secondaryTextColor } = Astro.props
   </div>
 </div>
 
-<style define:vars={{ secondaryTextColor }}>
+<style is:global define:vars={{ secondaryTextColor }}>
   .card-stats {
     display: flex;
     justify-content: center;
@@ -53,12 +53,12 @@ const { count, time, secondaryTextColor } = Astro.props
     position: relative;
   }
 
-  .stat {
+  .card-stats .stat {
     display: flex;
     gap: 4px;
   }
 
-  svg {
+  .card-stats svg {
     width: 16px;
     height: 16px;
   }

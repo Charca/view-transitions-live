@@ -77,7 +77,10 @@ const { showExtraButtons } = Astro.props
   </div>
 </div>
 
-<style define:vars={{ visibility: showExtraButtons ? 'visible' : 'hidden' }}>
+<style
+  is:global
+  define:vars={{ visibility: showExtraButtons ? 'visible' : 'hidden' }}
+>
   .player-controls-container {
     position: absolute;
     bottom: 0;
@@ -89,7 +92,7 @@ const { showExtraButtons } = Astro.props
     align-items: center;
   }
 
-  .player-controls {
+  .player-controls-container .player-controls {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,39 +100,39 @@ const { showExtraButtons } = Astro.props
     gap: 20px;
   }
 
-  .control {
+  .player-controls-container .control {
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  .big-control {
+  .player-controls-container .big-control {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     background: white;
   }
 
-  .big-control svg {
+  .player-controls-container .big-control svg {
     width: 28px;
     height: 28px;
     color: black;
   }
 
-  .small-control {
+  .player-controls-container .small-control {
     width: 46px;
     height: 46px;
     background: rgba(0, 0, 0, 0.8);
   }
 
-  .small-control svg {
+  .player-controls-container .small-control svg {
     width: 20px;
     height: 20px;
     color: white;
   }
 
-  .extra-control {
+  .player-controls-container .extra-control {
     visibility: var(--visibility);
   }
 </style>

@@ -12,7 +12,7 @@ const { isRounded } = Astro.props
   </video>
 </div>
 
-<style define:vars={{ borderRadius: isRounded ? '2rem' : '0' }}>
+<style is:global define:vars={{ borderRadius: isRounded ? '2rem' : '0' }}>
   .video-container {
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@ const { isRounded } = Astro.props
     bottom: 0;
   }
 
-  video {
+  .video-container video {
     height: 100%;
     width: 100%;
     object-fit: cover;

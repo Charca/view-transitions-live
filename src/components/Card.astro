@@ -59,6 +59,7 @@ const {
 </a>
 
 <style
+  is:global
   define:vars={{
     backgroundColor,
     backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
@@ -79,7 +80,7 @@ const {
     box-shadow: var(--shadow-elevation-low);
   }
 
-  .solid-background {
+  .card .solid-background {
     background: var(--backgroundColor);
     position: absolute;
     left: 0;
@@ -97,7 +98,7 @@ const {
     transform: scale(0.97);
   }
 
-  h2 {
+  .card h2 {
     font-size: 30px;
     margin: 10px 0;
     position: relative;

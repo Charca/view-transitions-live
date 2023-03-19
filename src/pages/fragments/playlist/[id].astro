@@ -29,7 +29,7 @@ const {
 } = playlist
 ---
 
-<main class="with-transition">
+<main class="playlist-container with-transition">
   <header>
     {
       backgroundAnimation === 'floatingSquares' ? (
@@ -58,6 +58,7 @@ const {
 </main>
 
 <style
+  is:global
   define:vars={{
     backgroundColor,
     backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
@@ -65,13 +66,13 @@ const {
     secondaryTextColor,
   }}
 >
-  main {
+  .playlist-container {
     margin: 0 auto;
     padding: 0;
     max-width: 600px;
   }
 
-  header {
+  .playlist-container header {
     color: var(--textColor);
     display: flex;
     flex-direction: column;
@@ -80,7 +81,7 @@ const {
     position: relative;
   }
 
-  .solid-background {
+  .playlist-container .solid-background {
     background: var(--backgroundColor);
     position: absolute;
     left: 0;
@@ -93,13 +94,13 @@ const {
     background-size: contain;
   }
 
-  h1 {
+  .playlist-container h1 {
     margin: 10px 0 15px;
     font-size: 3rem;
     text-align: center;
   }
 
-  p {
+  .playlist-container p {
     text-align: center;
     max-width: 360px;
     line-height: 1.6;

@@ -23,7 +23,7 @@ const tracks = [
 ]
 ---
 
-<ul>
+<ul class="playlist-details">
   {
     tracks.map((track) => (
       <li>
@@ -60,47 +60,47 @@ const tracks = [
   }
 </ul>
 
-<style>
-  ul,
-  li {
+<style is:global>
+  .playlist-details,
+  .playlist-details li {
     padding: 0;
     margin: 0;
   }
 
-  ul {
+  .playlist-details {
     margin-top: 20px;
   }
 
-  li {
+  .playlist-details li {
     display: flex;
     padding: 10px 20px;
     gap: 20px;
     align-items: center;
   }
 
-  .track-image {
+  .playlist-details .track-image {
     width: 60px;
     height: 60px;
     border-radius: 6px;
   }
 
-  .track-details {
+  .playlist-details .track-details {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 4px;
   }
 
-  .track-title {
+  .playlist-details .track-title {
     font-weight: bold;
   }
 
-  .track-icons {
+  .playlist-details .track-icons {
     display: flex;
     gap: 8px;
   }
 
-  .track-icons svg {
+  .playlist-details .track-icons svg {
     width: 24px;
     height: 24px;
     color: rgb(156, 156, 156);

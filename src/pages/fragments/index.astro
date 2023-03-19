@@ -5,7 +5,7 @@ import data from '../../data.json'
 ---
 
 <AppHeader />
-<main>
+<main class="app-container">
   <div class="card-list">
     {data.map((card) => <Card {...card} />)}
   </div>
@@ -47,20 +47,20 @@ import data from '../../data.json'
   </footer>
 </main>
 
-<style>
-  main {
+<style is:global>
+  .app-container {
     margin: auto;
     padding: 0 1.5rem 1.5rem;
     max-width: 600px;
   }
 
-  .card-list {
+  .app-container .card-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
-  footer {
+  .app-container footer {
     padding: 40px 0px;
   }
 </style>

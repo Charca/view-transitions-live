@@ -30,6 +30,7 @@ const { title, backgroundColor, media } = Astro.props
 </div>
 
 <style
+  is:global
   define:vars={{
     backgroundColor,
     marginTop: media.type === 'image' ? '20px' : '0',
@@ -43,7 +44,7 @@ const { title, backgroundColor, media } = Astro.props
     width: 100%;
   }
 
-  .card-media-overlay {
+  .card-media .card-media-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -53,7 +54,7 @@ const { title, backgroundColor, media } = Astro.props
     border-radius: 2rem;
   }
 
-  img {
+  .card-media img {
     display: block;
     max-height: 360px;
   }
