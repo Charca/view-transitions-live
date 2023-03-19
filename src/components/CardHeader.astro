@@ -3,10 +3,9 @@ export interface Props {
   avatar: string
   name: string
   date: string
-  secondaryTextColor: string
 }
 
-const { avatar, name, date, secondaryTextColor } = Astro.props
+const { avatar, name, date } = Astro.props
 ---
 
 <header class="card-header">
@@ -39,7 +38,7 @@ const { avatar, name, date, secondaryTextColor } = Astro.props
   </button>
 </header>
 
-<style is:global define:vars={{ secondaryTextColor }}>
+<style is:inline>
   .card-header {
     display: flex;
     gap: 12px;

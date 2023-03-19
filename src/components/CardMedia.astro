@@ -13,7 +13,12 @@ export interface Props {
 const { title, backgroundColor, media } = Astro.props
 ---
 
-<div class="card-media">
+<div
+  class="card-media"
+  style={`
+  --marginTop: ${media.type === 'image' ? '20px' : '0'};
+`}
+>
   {
     media.type === 'image' ? (
       <img src={media.url} alt={title} class="playlist-image" />
@@ -29,13 +34,7 @@ const { title, backgroundColor, media } = Astro.props
   <!-- <div class="card-media-overlay playlist-overlay"></div> -->
 </div>
 
-<style
-  is:global
-  define:vars={{
-    backgroundColor,
-    marginTop: media.type === 'image' ? '20px' : '0',
-  }}
->
+<style is:inline>
   .card-media {
     position: relative;
     display: flex;

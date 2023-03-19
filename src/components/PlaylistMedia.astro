@@ -2,7 +2,6 @@
 import PlayerControls from './PlayerControls.astro'
 
 export interface Props {
-  backgroundColor: string
   title: string
   media: {
     type: string
@@ -10,7 +9,7 @@ export interface Props {
   }
 }
 
-const { title, backgroundColor, media } = Astro.props
+const { title, media } = Astro.props
 ---
 
 <div class="playlist-media">
@@ -29,7 +28,7 @@ const { title, backgroundColor, media } = Astro.props
   <!-- <div class="card-media-overlay playlist-overlay"></div> -->
 </div>
 
-<style is:global define:vars={{ backgroundColor }}>
+<style is:inline>
   .playlist-media {
     position: relative;
     display: flex;

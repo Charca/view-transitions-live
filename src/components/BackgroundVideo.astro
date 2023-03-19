@@ -6,13 +6,19 @@ export interface Props {
 const { isRounded } = Astro.props
 ---
 
-<div class="video-container" data-persist-container="true">
+<div
+  class="video-container"
+  data-persist-container="true"
+  style={`
+  --borderRadius: ${isRounded ? '2rem' : '0'};
+`}
+>
   <video loop muted autoplay data-persist="true" class="playlist-background">
     <source src="/purple-bg-video.mp4" type="video/mp4" />
   </video>
 </div>
 
-<style is:global define:vars={{ borderRadius: isRounded ? '2rem' : '0' }}>
+<style is:inline>
   .video-container {
     position: absolute;
     top: 0;

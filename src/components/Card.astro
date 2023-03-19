@@ -42,7 +42,16 @@ const {
 } = Astro.props
 ---
 
-<a href={`/playlist/${id}`} class={`card`}>
+<a
+  href={`/playlist/${id}`}
+  class={`card`}
+  style={`
+  --backgroundColor: ${backgroundColor};
+  --textColor: ${textColor};
+  --backgroundImage: ${backgroundImage ? `url('${backgroundImage}')` : 'none'};
+  --secondaryTextColor: ${secondaryTextColor};
+`}
+>
   {
     backgroundAnimation === 'floatingSquares' ? (
       <FloatingSquares isRounded={true} />
@@ -52,20 +61,13 @@ const {
       <div class="solid-background playlist-background" />
     )
   }
-  <CardHeader {...user} secondaryTextColor={secondaryTextColor} />
+  <CardHeader {...user} />
   <h2 class="playlist-title">{title}</h2>
-  <CardStats {...stats} secondaryTextColor={secondaryTextColor} />
+  <CardStats {...stats} />
   <CardMedia backgroundColor={backgroundColor} title={title} media={media} />
 </a>
 
-<style
-  is:global
-  define:vars={{
-    backgroundColor,
-    backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
-    textColor,
-  }}
->
+<style is:inline>
   .card {
     border-radius: 2rem;
     text-decoration: none;

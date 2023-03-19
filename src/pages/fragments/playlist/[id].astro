@@ -29,7 +29,15 @@ const {
 } = playlist
 ---
 
-<main class="playlist-container with-transition">
+<main
+  class="playlist-container with-transition"
+  style={`
+  --backgroundColor: ${backgroundColor};
+  --textColor: ${textColor};
+  --backgroundImage: ${backgroundImage ? `url('${backgroundImage}')` : 'none'};
+  --secondaryTextColor: ${secondaryTextColor};
+`}
+>
   <header>
     {
       backgroundAnimation === 'floatingSquares' ? (
@@ -40,32 +48,16 @@ const {
         <div class="solid-background playlist-background" />
       )
     }
-    <PlaylistHeader
-      {...user}
-      textColor={textColor}
-      secondaryTextColor={secondaryTextColor}
-    />
+    <PlaylistHeader {...user} />
     <h1 class="playlist-title">{title}</h1>
-    <CardStats {...stats} secondaryTextColor={secondaryTextColor} />
+    <CardStats {...stats} />
     <p class="playlist-description">{description}</p>
-    <PlaylistMedia
-      backgroundColor={backgroundColor}
-      title={title}
-      media={media}
-    />
+    <PlaylistMedia title={title} media={media} />
   </header>
   <PlaylistDetails />
 </main>
 
-<style
-  is:global
-  define:vars={{
-    backgroundColor,
-    backgroundImage: backgroundImage ? `url('${backgroundImage}')` : 'none',
-    textColor,
-    secondaryTextColor,
-  }}
->
+<style is:inline>
   .playlist-container {
     margin: 0 auto;
     padding: 0;

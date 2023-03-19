@@ -3,11 +3,9 @@ export interface Props {
   avatar: string
   name: string
   date: string
-  textColor: string
-  secondaryTextColor: string
 }
 
-const { avatar, name, date, textColor, secondaryTextColor } = Astro.props
+const { avatar, name, date } = Astro.props
 ---
 
 <header class="playlist-header">
@@ -56,7 +54,7 @@ const { avatar, name, date, textColor, secondaryTextColor } = Astro.props
   </div>
 </header>
 
-<style is:global define:vars={{ textColor, secondaryTextColor }}>
+<style is:inline>
   .playlist-header {
     display: flex;
     flex-direction: column;

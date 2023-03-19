@@ -6,7 +6,12 @@ export interface Props {
 const { showExtraButtons } = Astro.props
 ---
 
-<div class="player-controls-container">
+<div
+  class="player-controls-container"
+  style={`
+  --visibility: ${showExtraButtons ? 'visible' : 'hidden'};
+`}
+>
   <div class="player-controls playlist-controls">
     <div class="control small-control extra-control">
       <svg
@@ -77,10 +82,7 @@ const { showExtraButtons } = Astro.props
   </div>
 </div>
 
-<style
-  is:global
-  define:vars={{ visibility: showExtraButtons ? 'visible' : 'hidden' }}
->
+<style is:inline>
   .player-controls-container {
     position: absolute;
     bottom: 0;

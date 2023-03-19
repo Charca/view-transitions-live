@@ -2,10 +2,9 @@
 export interface Props {
   count: string
   time: string
-  secondaryTextColor: string
 }
 
-const { count, time, secondaryTextColor } = Astro.props
+const { count, time } = Astro.props
 ---
 
 <div class="card-stats playlist-stats">
@@ -41,7 +40,7 @@ const { count, time, secondaryTextColor } = Astro.props
   </div>
 </div>
 
-<style is:global define:vars={{ secondaryTextColor }}>
+<style is:inline>
   .card-stats {
     display: flex;
     justify-content: center;
