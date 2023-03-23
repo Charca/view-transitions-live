@@ -2,3 +2,4 @@
   from = "https://live-transitions.netlify.app"
   to = "https://live-transitions.pages.dev"
   status = 301
+  force = true
