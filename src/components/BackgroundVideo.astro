@@ -13,7 +13,7 @@ const { isRounded } = Astro.props
   --borderRadius: ${isRounded ? '2rem' : '0'};
 `}
 >
-  <video loop muted autoplay data-persist="true" class="playlist-background">
+  <video loop muted autoplay playsinline data-persist="true" class="playlist-background">
     <source src="/purple-bg-video.mp4" type="video/mp4" />
   </video>
 </div>
