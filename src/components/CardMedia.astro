@@ -24,7 +24,7 @@ const { title, backgroundColor, media } = Astro.props
       <img src={media.url} alt={title} class="playlist-image" />
     ) : (
       <div data-persist-container="true">
-        <video loop muted autoplay class="playlist-image" data-persist="true">
+        <video loop muted autoplay playsinline class="playlist-image" data-persist="true">
           <source src={media.url} type="video/mp4" />
         </video>
       </div>
