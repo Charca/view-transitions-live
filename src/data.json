@@ -17,7 +17,9 @@
     "secondaryTextColor": "rgb(195, 195, 195)",
     "media": {
       "type": "image",
-      "url": "/sax-player.webp"
+      "url": "/sax-player.webp",
+      "width": "275",
+      "height": "360"
     }
   },
   {
@@ -39,7 +41,9 @@
     "secondaryTextColor": "#ab91b8",
     "media": {
       "type": "video",
-      "url": "/dancing-woman.mp4"
+      "url": "/dancing-woman.mp4",
+      "width": "552",
+      "height": "427"
     }
   },
   {
@@ -61,7 +65,9 @@
     "secondaryTextColor": "rgb(225, 225, 225)",
     "media": {
       "type": "image",
-      "url": "/guitar-player.webp"
+      "url": "/guitar-player.webp",
+      "width": "414",
+      "height": "360"
     }
   }
 ]
